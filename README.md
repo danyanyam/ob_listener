@@ -11,7 +11,7 @@ Must start downloading data from an arbitrary point in time, following the next 
 
 
 ### Building
-To install dependencies project uses (conan)[https://github.com/conan-io/conan]:
+To install dependencies project uses [conan](https://github.com/conan-io/conan):
 
 ```bash
 pip install conan
