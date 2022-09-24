@@ -33,7 +33,8 @@ namespace ftx
     json RESTClient::get_orderbook(const std::string market, int depth)
     {
         auto response =
-            http_client.get("markets/" + market + "?depth=" + std::to_string(depth));
+            http_client.get("markets/" + market + "?depth=" +
+                            std::to_string(depth));
         return json::parse(response.body());
     }
 

@@ -25,15 +25,15 @@ namespace util
                        std::string _api_key,
                        std::string _api_secret,
                        std::string _subaccount_name);
-        // GET request
         http::response<http::string_body> get(const std::string target);
-        // POST request
-        http::response<http::string_body> post(const std::string target, const std::string payload);
-        // DELETE request
+        http::response<http::string_body> post(
+            const std::string target,
+            const std::string payload);
         http::response<http::string_body> delete_(const std::string target);
 
     private:
-        http::response<http::string_body> request(http::request<http::string_body> req);
+        http::response<http::string_body> request(
+            http::request<http::string_body> req);
         void authenticate(http::request<http::string_body> &req);
 
     private:

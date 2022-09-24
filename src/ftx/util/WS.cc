@@ -34,9 +34,10 @@ namespace util
             [this](websocketpp::connection_hdl)
             { throw "Fail handler"; });
 
-        wsclient.set_tls_init_handler([](websocketpp::connection_hdl)
-                                      { return websocketpp::lib::make_shared<boost::asio::ssl::context>(
-                                            boost::asio::ssl::context::tlsv12); });
+        wsclient.set_tls_init_handler(
+            [](websocketpp::connection_hdl)
+            { return websocketpp::lib::make_shared<boost::asio::ssl::context>(
+                  boost::asio::ssl::context::tlsv12); });
     }
 
     void WS::configure(std::string _uri,
@@ -66,8 +67,8 @@ namespace util
         connection = wsclient.get_connection(uri, ec);
         if (ec)
         {
-            std::string err =
-                "Could not create connection because: " + ec.message() + "\n";
+            std::string err = "Could not create connection because: " +
+                              ec.message() + "\n";
             throw err;
         }
         wsclient.connect(connection);

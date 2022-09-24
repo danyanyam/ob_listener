@@ -32,8 +32,9 @@ namespace util
         return request(req);
     }
 
-    http::response<http::string_body> HTTPSession::post(const std::string target,
-                                                        const std::string payload)
+    http::response<http::string_body> HTTPSession::post(
+        const std::string target,
+        const std::string payload)
     {
         std::string endpoint = "/api/" + target;
         http::request<http::string_body> req{http::verb::post, endpoint, 11};
@@ -42,7 +43,8 @@ namespace util
         return request(req);
     }
 
-    http::response<http::string_body> HTTPSession::delete_(const std::string target)
+    http::response<http::string_body> HTTPSession::delete_(
+        const std::string target)
     {
         std::string endpoint = "/api/" + target;
         http::request<http::string_body> req{http::verb::delete_, endpoint, 11};
@@ -90,7 +92,8 @@ namespace util
         if (ec == boost::asio::error::eof)
         {
             // Rationale:
-            // http://stackoverflow.com/questions/25587403/boost-asio-ssl-async-shutdown-always-finishes-with-an-error
+            // http://stackoverflow.com/questions/25587403/boost-asio-ssl
+            // -async-shutdown-always-finishes-with-an-error
             ec.assign(0, ec.category());
         }
 

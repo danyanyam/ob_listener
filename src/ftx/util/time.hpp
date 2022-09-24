@@ -17,7 +17,8 @@ namespace util
 
     inline chrono::milliseconds get_ms_timestamp(TimePoint time)
     {
-        return chrono::duration_cast<chrono::milliseconds>(time.time_since_epoch());
+        return chrono::duration_cast<chrono::milliseconds>(
+            time.time_since_epoch());
     }
 
 }

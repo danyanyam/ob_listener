@@ -33,7 +33,8 @@ namespace ftx
         {
             long ts = util::get_ms_timestamp(util::current_time()).count();
             std::string data = std::to_string(ts) + "websocket_login";
-            std::string hmacced = encoding::hmac(std::string(api_secret), data, 32);
+            std::string hmacced = encoding::hmac(
+                std::string(api_secret), data, 32);
             std::string sign = encoding::util_string_to_hex(
                 (unsigned char *)hmacced.c_str(), 32);
 
