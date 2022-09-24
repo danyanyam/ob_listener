@@ -1,5 +1,9 @@
 Fork of [official](https://github.com/ftexchange/ftx) examples repository
 
+At the moment, the repository contains functionality sufficient to communicate
+with the ftx API and listen to websockets. It is planned that in the future
+I will put these components together to configure the data collection system.
+
 ### TO-DO
 
 Must start downloading data from an arbitrary point in time, following the next algorithm:
