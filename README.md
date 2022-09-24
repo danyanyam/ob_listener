@@ -5,6 +5,16 @@ with the [ftx](https://docs.ftx.com/#rest-api) API and listen to websockets.
 It is planned that in the future I will put these components together to
 configure the data collection system.
 
+### Project structure
+    .
+    ├── ...
+    ├── artifacts                  
+    ├── build                       
+    ├── src                        # Source headers and cpp files
+    │   ├── ftx                    # Ftx related utilities
+    │   └── scripts                # Main entrypoint scripts 
+    └── ...
+
 ### TO-DO
 
 Must start downloading data from an arbitrary point in time, following the next algorithm:
@@ -13,7 +23,6 @@ Must start downloading data from an arbitrary point in time, following the next 
 3. Record incoming updates to the file before the occurrence of stopping events
 4. When an error occurs, write its text to the telegram and log the error message and stop the download
 5. At the onset of 23:59:59 begin with step 1)
-
 
 ### Building
 To install dependencies project uses [conan](https://github.com/conan-io/conan):
