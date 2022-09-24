@@ -13,6 +13,8 @@ configure the data collection system.
     ├── src                        # Source headers and cpp files
     │   ├── ftx                    # Ftx related utilities
     │   └── scripts                # Main entrypoint scripts 
+    │
+    ├── conanfile.py               # All external cpp dependencies are here
     └── ...
 
 ### TO-DO
