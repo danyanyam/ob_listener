@@ -2,7 +2,7 @@ build/*
 !build/.gitkeep
 .vscode/
 .DS_Store
-
+logs/
 # Prerequisites
 *.d
 
