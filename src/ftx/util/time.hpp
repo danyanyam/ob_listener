@@ -1,6 +1,8 @@
 #pragma once
 
 #include <chrono>
+#include <sstream>
+#include <iomanip>
 
 namespace chrono = std::chrono;
 
@@ -19,6 +21,16 @@ namespace util
     {
         return chrono::duration_cast<chrono::milliseconds>(
             time.time_since_epoch());
+    }
+
+    inline std::string strftime_now(std::string format)
+    {
+        std::stringstream ss;
+        TimePoint now = current_time();
+        std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+        std::tm now_tm = *std::localtime(&now_c);
+        ss << std::put_time(&now_tm, format.c_str());
+        return ss.str();
     }
 
 }

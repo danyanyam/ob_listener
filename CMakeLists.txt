@@ -4,7 +4,9 @@ project(cpp_http)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}/build;${CMAKE_MODULE_PATH}")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/artefacts")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/artifacts")
+set(EXECUTABLE_OUTPUT_PATH  "${PROJECT_SOURCE_DIR}/artifacts")
+
 
 # Conan settins
 include(${CMAKE_SOURCE_DIR}/build/conanbuildinfo.cmake)
@@ -16,4 +18,5 @@ include_directories(src)
 add_subdirectory(src/ftx/rest)
 add_subdirectory(src/ftx/ws)
 add_subdirectory(src/ftx/util)
+add_subdirectory(src/logger)
 add_subdirectory(src/scripts)
