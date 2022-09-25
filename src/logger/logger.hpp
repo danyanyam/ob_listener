@@ -6,7 +6,6 @@
 class Logger
 {
 private:
-    std::string _name;
     std::shared_ptr<spdlog::logger> _logger;
 
 public:

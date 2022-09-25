@@ -14,20 +14,20 @@ namespace fs = boost::filesystem;
 
 Logger::Logger(std::string name, bool to_file)
 {
+    std::vector<spdlog::sink_ptr> sinks;
+
     using colored_sink = spdlog::sinks::stdout_color_sink_mt;
     using rotated_sink = spdlog::sinks::rotating_file_sink_mt;
 
-    _name = name;
-    std::vector<spdlog::sink_ptr> sinks;
-
-    auto path = fs::current_path() / "logs";
-
     auto console_sink = std::make_shared<colored_sink>();
     console_sink->set_pattern("%^[%Y-%m-%d %H:%M:%S.%e] %v%$");
+    sinks.emplace_back(console_sink);
 
     if (to_file)
     {
-        fs::create_directory("logs");
+        auto path = fs::current_path() / "logs";
+        fs::create_directory(path);
+
         path /= util::strftime_now("%Y-%m-%d") + ".log";
         auto file_sink = std::make_shared<rotated_sink>(
             path.string(), /* filename */
@@ -37,11 +37,11 @@ Logger::Logger(std::string name, bool to_file)
         );
         sinks.emplace_back(file_sink);
     }
-
-    sinks.emplace_back(console_sink);
-
-    _logger = std::make_shared<spdlog::logger>(_name,
-                                               sinks.begin(), sinks.end());
+    _logger = std::make_shared<spdlog::logger>(
+        name,
+        sinks.begin(),
+        sinks.end()
+    );
     _logger->set_level(spdlog::level::trace);
     _logger->flush_on(spdlog::level::trace);
     spdlog::register_logger(_logger);
