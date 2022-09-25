@@ -10,7 +10,9 @@
 #include "ftx/util/time.hpp"
 #include <iostream>
 
+
 namespace fs = boost::filesystem;
+
 
 Logger::Logger(std::string name, bool to_file)
 {
